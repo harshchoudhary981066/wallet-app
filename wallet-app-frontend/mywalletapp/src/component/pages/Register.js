@@ -1,10 +1,13 @@
 import React, { useContext, useState } from 'react';
 import UserContext from '../context/Context';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
 
     const { username, setUsername, password, setPassword, email, setEmail, firstName, setFirstName, lastName, setLastName } = useContext(UserContext);
+    const navigate = useNavigate();
 
 
     const handleSubmit = async (e) => {
@@ -142,11 +145,14 @@ const Register = () => {
                         </div>
                         <hr className="mb-6 border-t" />
 
-                        <div className="text-center">
-                            <a className="inline-block text-sm font-semibold text-blue-500 dark:text-blue-500 align-baseline hover:text-blue-800" href="./index.html">
-                                Already have an account? Login!
-                            </a>
-                        </div>
+                            <div className="text-center">
+                                <button 
+                                    onClick={() => navigate('/auth/login')} 
+                                    className="inline-block text-sm font-semibold text-blue-500 dark:text-blue-500 align-baseline hover:text-blue-800 bg-transparent border-none cursor-pointer p-0"
+                                >
+                                    Already have an account? Login!
+                                </button>
+                            </div>
                     </form>
                 </div>
             </div>
